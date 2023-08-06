@@ -16,6 +16,8 @@ from django.contrib.messages import constants as messages
 
 import os
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #SECRET_KEY = 'django-insecure-b)=9blj9f6u8giolw1mcj+uc27+)1mm-xd2^3hm&9_j+y5xy0)'
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['cinegracia-d3be55271b49.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -94,7 +96,9 @@ DATABASES = {
     }
 }
 
+#postgres://cine_database_user:MWgxghKzkRatagSzdzMl7TcmgLjTy1w0@dpg-cj7nag45kgrc73eo2mkg-a.oregon-postgres.render.com/cine_database
 
+DATABASES['default'] = dj_database_url.parse("postgres://cine_database_user:MWgxghKzkRatagSzdzMl7TcmgLjTy1w0@dpg-cj7nag45kgrc73eo2mkg-a.oregon-postgres.render.com/cine_database")
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
