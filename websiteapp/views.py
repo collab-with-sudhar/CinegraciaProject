@@ -100,7 +100,7 @@ def index(request):
     for lan in lan_data:
         lan_details = {
             
-            'iso_639_1': lan.get('iso_639_1'),
+            'iso_639_1': lan['iso_639_1'],
             'english_name' : lan['english_name'],
             'name' : lan['name'],
         }
