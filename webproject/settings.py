@@ -53,7 +53,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -139,18 +138,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-STATICFILES_DIRS= [
-    os.path.join(BASE_DIR, 'static')
-]
-
-STATIC_ROOT =os.path.join(BASE_DIR, '')
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-
 MEDIA_URL = '/media/'
 
+  
+
+if DEBUG:
+
+  STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+else:
+
+  STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+  
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 AUTO_LOGOUT = {'IDLE_TIME': 6000}
 

@@ -1,14 +1,21 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
 from .import views
 from .views import *
 from register.views import logout
 from  django.contrib.auth import views as auth_views
 
+from django.conf import settings
+
+from django.views.static import serve
+
 app_name = "websiteapp"
 app_name = "toprating"
 app_name = "register"
 urlpatterns = [
+    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
     path('',views.index, name='index'),
     path('register/',views.register, name='register'),
     path('password_reset/',auth_views.PasswordResetView.as_view(),name='password_reset'),
