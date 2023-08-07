@@ -25,7 +25,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 import os
 
-key = os.environ.get('TMDB_API')
+key = "34d518706297f7ced3a25969c4a2e1c6"
 
 
 def error_404(request,exception):
@@ -974,7 +974,6 @@ class MovieDetailView(DetailView):
                     if 'name' in res:
 
                         search_details = {
-                                        'runtime' : res['runtime'],
                                         'tagline' : res['tagline'],
                                         'budget' : res['budget'],
                                         'homepage' : res['homepage'],
