@@ -140,13 +140,13 @@
                 {% for result in movie_page %}
                     <li>
                         <div class="movie-card">
-                            <a href="{%  url 'websiteapp:movie-details' result.title|slugify result.id %}">
+                            <a href="{%  url 'websiteapp:movie-details' result.title result.id %}">
                                 <figure class="card-banner">
                                     <img src="https://image.tmdb.org/t/p/w500{{result.poster_path}}" alt="{{result.title}}">
                                 </figure>
                             </a>
                             <div class="title-wrapper">
-                                <a href="{%  url 'websiteapp:movie-details' result.title|slugify  result.id %}">
+                                <a href="{%  url 'websiteapp:movie-details' result.title result.id %}">
                                     <h3 class="card-title">{{result.title}}</h3>
                                 </a>
                                 <time datetime="2022">{{result.release_date}}</time>
@@ -194,13 +194,13 @@
                     {% for result in series_page %}
                         <li>
                             <div class="movie-card">
-                                <a href="{%  url 'websiteapp:movie-details' result.title|slugify  result.id %}">
+                                <a href="{%  url 'websiteapp:movie-details' result.title  result.id %}">
                                     <figure class="card-banner">
                                         <img src="https://image.tmdb.org/t/p/w500{{result.poster_path}}" alt="{{result.title}}">
                                     </figure>
                                 </a>
                                 <div class="title-wrapper">
-                                    <a href="{%  url 'websiteapp:movie-details' result.title|slugify  result.id %}">
+                                    <a href="{%  url 'websiteapp:movie-details' result.title result.id %}">
                                         <h3 class="card-title">{{result.title}}</h3>
                                     </a>
                                     <time datetime="2022">{{result.release_date}}</time>

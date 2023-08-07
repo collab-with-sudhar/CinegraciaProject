@@ -1,7 +1,9 @@
 from django import template
+from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
 @register.filter
-def add_size(value, size):
-    return f"{value}/w{size}"
+@stringfilter
+def replace_slashes_with_spaces(value):
+    return value.replace('/', ' ')

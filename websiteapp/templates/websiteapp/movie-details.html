@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load custom_filter %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -743,7 +743,7 @@
               </div>
               <div style="flex: 1;">
       
-                <form method="post" action="{% url 'websiteapp:add-rating' movieid=sea.name  id=sea.id %}">
+                <form method="post" action="{% url 'websiteapp:add-rating' movieid=sea.name id=sea.id %}">
                   {% csrf_token %}
                   <label class="service-subtitle">Rate the movie:</label><br><br>
                   <input type="number" class="center-placeholder" style="width: 250px;" placeholder="Rate Here" name="rating" min="1" max="10" step="0.1" required><br>
@@ -922,14 +922,14 @@
             <li>
               <div class="movie-card">
         
-                <a href="{% url 'websiteapp:movie-details' rec.title|slugify rec.id %}">
+                <a href="{% url 'websiteapp:movie-details' rec.title|replace_slashes_with_spaces rec.id %}">
                   <figure class="card-banner">
                     <img src="https://image.tmdb.org/t/p/w500{{rec.poster_path}}" alt="{{series.title}}">
                   </figure>
                 </a>
     
                 <div class="title-wrapper">
-                  <a href="{% url 'websiteapp:movie-details' rec.title|slugify rec.id %}">
+                  <a href="{% url 'websiteapp:movie-details' rec.title|replace_slashes_with_spaces rec.id %}">
                     <h3 class="card-title">{{rec.title}}</h3>
                   </a>
     

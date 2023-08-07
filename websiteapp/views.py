@@ -24,6 +24,9 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from django.contrib.auth import get_user_model
 import os
+from django import template
+from django.utils.text import slugify
+
 
 key = "34d518706297f7ced3a25969c4a2e1c6"
 

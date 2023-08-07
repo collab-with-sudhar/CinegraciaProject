@@ -508,7 +508,7 @@
 
                 <div class="title-wrapper">
                   
-                  <a href="{%  url 'websiteapp:movie-details' upcoming.title|slugify upcoming.id %}">
+                  <a href="{%  url 'websiteapp:movie-details' upcoming.title upcoming.id %}">
                     <h3 class="card-title">{{upcoming.title}}</h3>
                   </a>
 
@@ -692,12 +692,12 @@
               <p class="service-subtitle-pf" style="font-weight: bold;">Profile Picture</p><br>
               <div class="profile-picture-container">
                 
-                <img class="profile-picture" src="" onclick="showProfilePicture(this)"> <br>
+                <img class="profile-picture" src="{{suser.profile.dp.url}}" onclick="showProfilePicture(this)"> <br>
               </div><br><br><br>
               <h2 class="service-subtitle-pf" style="font-weight: bold;" >Bio</h2> <br>
                 <div class="bio-container">
                 
-                    <p class="bio-text"></p>
+                    <p class="bio-text">{{suser.profile.bio}}</p>
               
                   
                 </div><br><br>
@@ -722,7 +722,7 @@
 
       <!-- 
         - #TOP RATED
-      -->
+      
 
       <section class="top-rated">
         <style>
@@ -800,7 +800,78 @@
       {% endfor %}    
 
         </div>
+      </section>-->
+      <section class="top-rated">
+        <div class="container">
+
+          <p class="section-subtitle">Online Streaming</p>
+
+          <h2 class="h2 section-title">Popular Movies</h2>
+
+          <ul class="filter-list">
+
+            <li>
+              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='movie' id=1 %}">Movies</a>
+                
+            </li>
+
+            <li>
+              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='series' id=3 %}">TV Shows</a>
+            </li>
+
+            <li>
+              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='upcoming' id=2 %}">Upcoming</a>
+            </li>
+
+            <li>
+              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='collection' id=4 %}">Collection</a>
+            </li>
+
+          </ul>
+
+          <ul class="movies-list">
+      {% for movie in movies %}
+            <li>
+              <div class="movie-card">
+        
+                <a href="{% url 'websiteapp:movie-details' movie.title movie.id %}">
+                  <figure class="card-banner">
+                    <img src="{{movie.poster_path}}" alt="Sonic the Hedgehog 2 movie poster">
+                  </figure>
+                </a>
+
+                <div class="title-wrapper">
+                  <a href="{% url 'websiteapp:movie-details' movie.title movie.id %}">
+                    <h3 class="card-title">{{movie.title}}</h3>
+                  </a>
+
+                  <time datetime="2022">{{movie.release_date}}</time>
+                </div>
+
+                <div class="card-meta">
+                  <div class="badge badge-outline">2K</div>
+
+                  <div class="duration">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="PT122M">{{movie.popularity}}</time>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+
+                    <data>{{movie.vote_average}}0</data>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+
+      {% endfor %}    
+
+        </div>
       </section>
+
 
 
 
@@ -879,77 +950,6 @@
       {% endfor %}
   
       </section>
-      <section class="top-rated">
-        <div class="container">
-
-          <p class="section-subtitle">Online Streaming</p>
-
-          <h2 class="h2 section-title">Popular Movies</h2>
-
-          <ul class="filter-list">
-
-            <li>
-              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='movie' id=1 %}">Movies</a>
-                
-            </li>
-
-            <li>
-              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='series' id=3 %}">TV Shows</a>
-            </li>
-
-            <li>
-              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='upcoming' id=2 %}">Upcoming</a>
-            </li>
-
-            <li>
-              <a class="filter-btn" href="{% url 'websiteapp:allshows' section='collection' id=4 %}">Collection</a>
-            </li>
-
-          </ul>
-
-          <ul class="movies-list">
-      {% for movie in movies %}
-            <li>
-              <div class="movie-card">
-        
-                <a href="{% url 'websiteapp:movie-details' movie.title movie.id %}">
-                  <figure class="card-banner">
-                    <img src="{{movie.poster_path}}" alt="Sonic the Hedgehog 2 movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="{% url 'websiteapp:movie-details' movie.title movie.id %}">
-                    <h3 class="card-title">{{movie.title}}</h3>
-                  </a>
-
-                  <time datetime="2022">{{movie.release_date}}</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT122M">{{movie.popularity}}</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>{{movie.vote_average}}0</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-      {% endfor %}    
-
-        </div>
-      </section>
-
 
 
 
