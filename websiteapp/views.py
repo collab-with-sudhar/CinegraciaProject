@@ -975,7 +975,6 @@ class MovieDetailView(DetailView):
                     if 'name' in res:
 
                         search_details = {
-                                        'runtime' : res['runtime'],
                                         'tagline' : res['tagline'],
                                         'budget' : res['budget'],
                                         'homepage' : res['homepage'],
