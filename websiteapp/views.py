@@ -749,12 +749,12 @@ class MovieDetailView(DetailView):
         
         tmdb_api_key = "34d518706297f7ced3a25969c4a2e1c6"
         api_urls = [
-            f'https://api.themoviedb.org/3/movie/popular?api_key={key}',
+            f'https://api.themoviedb.org/3/movie/popular?api_key={tmdb_api_key}',
             #f'https://api.themoviedb.org/3/tv/top_rated?api_key={tmdb_api_key}',
         ]
         urls = [
-            f'https://api.themoviedb.org/3/movie/{id}?api_key={key}',]
-        series_urls =    [f'https://api.themoviedb.org/3/tv/{id}?api_key={key}',]
+            f'https://api.themoviedb.org/3/movie/{id}?api_key={tmdb_api_key}',]
+        series_urls =    [f'https://api.themoviedb.org/3/tv/{id}?api_key={tmdb_api_key}',]
         
         search_list = []
         base_image_url = 'https://image.tmdb.org/t/p/w500' 
@@ -764,7 +764,7 @@ class MovieDetailView(DetailView):
         genres = {genre['id']: genre['name'] for genre in genre_data['genres']}
         #https://api.themoviedb.org/3/movie/popular?api_key=87605116445c191d48efb6e99e895de5
 
-        series_api = f'https://api.themoviedb.org/3/tv/top_rated?api_key={tmdb_api_key}'
+        series_api = f'https://api.themoviedb.org/3/tv/top_rated?api_key={key}'
         response = requests.get(series_api)
         series_data = response.json()
         series = series_data['results']
@@ -823,7 +823,7 @@ class MovieDetailView(DetailView):
                         
                             sea = result
 
-                            movi_details_url = f"https://api.themoviedb.org/3/movie/{sea['id']}?api_key={tmdb_api_key}&append_to_response=videos"
+                            movi_details_url = f"https://api.themoviedb.org/3/movie/{sea['id']}?api_key={key}&append_to_response=videos"
                             movi_details_response = requests.get(movi_details_url)
                             movi_details_data = movi_details_response.json()
 
@@ -923,7 +923,7 @@ class MovieDetailView(DetailView):
 
                         
                             sea = res
-                            serie_details_url = f"https://api.themoviedb.org/3/tv/{sea['id']}?api_key={tmdb_api_key}&append_to_response=videos"
+                            serie_details_url = f"https://api.themoviedb.org/3/tv/{sea['id']}?api_key={key}&append_to_response=videos"
                             serie_details_response = requests.get(serie_details_url)
                             serie_details_data = serie_details_response.json()
 
