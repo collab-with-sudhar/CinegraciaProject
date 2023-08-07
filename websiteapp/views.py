@@ -28,7 +28,7 @@ from django import template
 from django.utils.text import slugify
 
 
-key = "34d518706297f7ced3a25969c4a2e1c6"
+key = os.environ.get('key')
 
 
 def error_404(request,exception):
@@ -750,7 +750,7 @@ class MovieDetailView(DetailView):
     
     def tmdb(self,request,movieid,id):
         
-        tmdb_api_key = "34d518706297f7ced3a25969c4a2e1c6"
+        tmdb_api_key = os.environ.get('key')
         api_urls = [
             f'https://api.themoviedb.org/3/movie/popular?api_key={tmdb_api_key}',
             #f'https://api.themoviedb.org/3/tv/top_rated?api_key={tmdb_api_key}',
@@ -1457,7 +1457,7 @@ def allshows(request,section,id):
     for tits in range(1,total+1):
 
         url = f'https://api.themoviedb.org/3/movie/top_rated?api_key={key}&page={tits}'
-        ser = f'https://api.themoviedb.org/3/tv/popular?api_key={key}&page={tits}'
+        ser = f'https://api.themoviedb.org/3/tv/top_rated?api_key={key}&page={tits}'
 
         resp = requests.get(ser)
 
