@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic,'
+    'whitenoise.runserver_nostatic',
     'websiteapp',
     'register',
     'moviedetail',
