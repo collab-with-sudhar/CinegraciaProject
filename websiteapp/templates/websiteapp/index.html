@@ -82,7 +82,7 @@
             <a class="btn btn-primary" href="register/logout" >Logout</a>
           </li>
         {% else %}
-            <li><a class="btn btn-primary" href="register">Sign-in</a></li>
+            <li><a class="btn btn-primary" href="{% url 'register' %}">Sign-in</a></li>
             <li><a class="btn btn-primary" href="register/login">Login</a></li>
         {% endif %}
         </ul>

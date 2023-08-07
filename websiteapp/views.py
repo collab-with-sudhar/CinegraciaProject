@@ -975,7 +975,6 @@ class MovieDetailView(DetailView):
 
                         search_details = {
                                         'tagline' : res['tagline'],
-                                        'budget' : res['budget'],
                                         'homepage' : res['homepage'],
                                         'title' : res['name'],
                                         'vote_average': res['vote_average'],
