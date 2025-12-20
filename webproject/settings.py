@@ -101,7 +101,7 @@ DATABASES = {
 
 #postgres://cine_database_user:MWgxghKzkRatagSzdzMl7TcmgLjTy1w0@dpg-cj7nag45kgrc73eo2mkg-a.oregon-postgres.render.com/cine_database
 
-DATABASES['default'] = dj_database_url.parse("postgresql://cinedb_cxh7_user:RlJ9y9gz7dUwNX2ihDYRMHvub1d3c5Ua@dpg-d4pggangi27c739i9330-a/cinedb_cxh7")
+DATABASES['default'] = dj_database_url.parse("postgresql://cinedb_cxh7_user:RlJ9y9gz7dUwNX2ihDYRMHvub1d3c5Ua@dpg-d4pggangi27c739i9330-a.oregon-postgres.render.com/cinedb_cxh7")
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
