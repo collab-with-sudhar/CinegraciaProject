@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b)=9blj9f6u8giolw1mcj+uc27+)1mm-xd2^3hm&9_j+y5xy0)'
 #SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['*']
@@ -91,12 +91,10 @@ WSGI_APPLICATION = 'webproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': 5432,
-        'OPTIONS': {'sslmode': 'require'},
+        'NAME': 'sudhar',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
 
     }
 }
