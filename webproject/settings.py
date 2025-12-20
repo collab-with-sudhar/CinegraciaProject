@@ -34,7 +34,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+CSRF_TRUSTED_ORIGINS = ['https://*.azurewebsites.net']
 # Application definition
 
 INSTALLED_APPS = [
@@ -91,17 +91,19 @@ WSGI_APPLICATION = 'webproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sudhar',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': 5432,
+        'OPTIONS': {'sslmode': 'require'},
 
     }
 }
 
 #postgres://cine_database_user:MWgxghKzkRatagSzdzMl7TcmgLjTy1w0@dpg-cj7nag45kgrc73eo2mkg-a.oregon-postgres.render.com/cine_database
 
-DATABASES['default'] = dj_database_url.parse("postgres://cine_database_user:MWgxghKzkRatagSzdzMl7TcmgLjTy1w0@dpg-cj7nag45kgrc73eo2mkg-a.oregon-postgres.render.com/cine_database")
+#DATABASES['default'] = dj_database_url.parse("postgres://cine_database_user:MWgxghKzkRatagSzdzMl7TcmgLjTy1w0@dpg-cj7nag45kgrc73eo2mkg-a.oregon-postgres.render.com/cine_database")
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -179,7 +181,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 messages = [
     {"tags": "success", "content": "Success message"},
     {"tags": "error", "content": "Error message"},
